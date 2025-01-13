@@ -14,6 +14,10 @@ public class UserInfoController
 	@GetMapping("/getuserinfo")
 	public UserInfo getInfo()
 	{
-		return userInfoService.getUserInfoById(new Long(1));
+		//userInfoService.addUserInfo(); 
+		UserInfo ui = userInfoService.getUserInfoByName("张三");
+		//userInfoService.addSkills(ui,"JavaScript");
+		return ui;
+		
 	}
 }

@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.util.*;
 
 @Entity
 public class UserInfo
@@ -12,6 +13,18 @@ public class UserInfo
 	private String post;
 	private String avatar;
 	private String intro;
+	@ElementCollection
+	private List<String> skills;
+
+	public void setSkills(List<String> skills)
+	{
+		this.skills = skills;
+	}
+
+	public List<String> getSkills()
+	{
+		return skills;
+	}
 
 	public void setIntro(String intro)
 	{

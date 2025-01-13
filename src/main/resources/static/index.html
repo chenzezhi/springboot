@@ -98,9 +98,9 @@
   </table>
  </section>
  <!-- 技能 -->
- <section id="skills" class="container mt-5">
+ <section class="container mt-5">
   <h2>技能</h2>
-  <ul class="list-group">
+  <ul id="skills" class="list-group">
    <li class="list-group-item">HTML</li>
    <li class="list-group-item">CSS</li>
    <li class="list-group-item">JavaScript</li>
@@ -139,6 +139,13 @@
    $("#post").html(info.post);
    $("#intro").html(info.intro);
    $("#avatar").attr('src', info.avatar);
+   var sk = "";
+   for(var i=0;i<info.skills.length;i++){
+    sk += `<li class="list-group-item">`;
+    sk += info.skills[i];
+    sk += `</li>`
+   }
+   $("#skills").html(sk);
   };
   xhr.open("GET", "getuserinfo");
   xhr.send();
