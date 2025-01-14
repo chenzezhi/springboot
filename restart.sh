@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "初始化……"
+sh init.sh
 
 PROJECT_DIR="/storage/emulated/0/AppProjects/demo"
 BUILD_COMMAND="mvn clean package -DskipTests"

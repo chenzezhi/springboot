@@ -9,12 +9,32 @@ public class UserInfo
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	//简历姓名
 	private String name;
+	//应聘岗位
 	private String post;
+	//头像
 	private String avatar;
+	//个人简介
 	private String intro;
+	//已掌握的技能或工具
 	@ElementCollection
 	private List<String> skills;
+	//工作经验
+	@OneToOne(cascade = CascadeType.ALL)
+	//@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private UserProcess up;
+	
+
+	public void setUp(UserProcess up)
+	{
+		this.up = up;
+	}
+
+	public UserProcess getUp()
+	{
+		return up;
+	}
 
 	public void setSkills(List<String> skills)
 	{
