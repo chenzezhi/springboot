@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.util.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties({"userinfo"})  // 忽略序列化中的userinfo
 @Entity
 public class UserProcess
 {
@@ -10,21 +11,35 @@ public class UserProcess
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//公司
-	private String group;
+	//公司 
+	private String groupname;
 	//职位
 	private String position;
 	//工作时间
-	private String workHours;
+	private String worktime;
+	//userinfo对应的实例
+	@ManyToOne
+    @JoinColumn(name = "userinfo_id", nullable = false)
+	private UserInfo userinfo;
 
-	public void setGroup(String group)
+	public void setUserinfo(UserInfo userinfo)
 	{
-		this.group = group;
+		this.userinfo = userinfo;
 	}
 
-	public String getGroup()
+	public UserInfo getUserinfo()
 	{
-		return group;
+		return userinfo;
+	}
+
+	public void setGroupname(String groupname)
+	{
+		this.groupname = groupname;
+	}
+
+	public String getGroupname()
+	{
+		return groupname;
 	}
 
 	public void setPosition(String position)
@@ -37,14 +52,14 @@ public class UserProcess
 		return position;
 	}
 
-	public void setWorkHours(String workHours)
+	public void setWorktime(String workTime)
 	{
-		this.workHours = workHours;
+		this.worktime = workTime;
 	}
 
-	public String getWorkHours()
+	public String getWorktime()
 	{
-		return workHours;
+		return worktime;
 	}
 	
 	public Long getId()

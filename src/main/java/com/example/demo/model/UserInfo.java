@@ -21,20 +21,22 @@ public class UserInfo
 	@ElementCollection
 	private List<String> skills;
 	//工作经验
-	@OneToOne(cascade = CascadeType.ALL)
-	//@JoinColumn(name = "address_id", referencedColumnName = "id")
-	private UserProcess up;
-	
+	@OneToMany(mappedBy = "userinfo", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<UserProcess> up;
 
-	public void setUp(UserProcess up)
+	public void setUp(List<UserProcess> up)
 	{
 		this.up = up;
 	}
 
-	public UserProcess getUp()
+	public List<UserProcess> getUp()
 	{
 		return up;
 	}
+
+	
+
+	
 
 	public void setSkills(List<String> skills)
 	{
